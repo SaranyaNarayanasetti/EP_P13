@@ -1,0 +1,88 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<link rel="stylesheet"  href="register.css" type="text/css" />
+<head>
+<title>User Registration</title>
+
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+    <h2 class="active">Sign up</h2>
+   
+	 <div class="fadeIn first">
+     <img src="loginIcon.png" id="icon" alt="User Icon" />
+     </div>
+	<h:form >
+		<h:message for="RegisterGroupPanel" style="color:red;" />
+
+		<h:panelGrid columns="3" id="RegisterGroupPanel">
+
+		<h:outputLabel for="username" value="Username : " />
+			
+			<h:inputText  class="fadeIn second" name="username" value="#{u.username}" required="true"
+				requiredMessage="Please enter username" placeholder="username"/>
+				<h:message for="username" style="color: red;" />
+			
+			
+			
+			<h:outputLabel for="firstname" value="Firstname : " />
+			<h:inputText id="firstname" class="fadeIn third" value="#{u.firstname}" required="true"
+				requiredMessage="Please enter firstname" />
+			<h:message for="firstname" style="color: red;" />
+			
+		
+			 <h:outputLabel for="lastname" value="Lastname : " /> 
+			<h:inputText id="lastname" class="fadeIn fourth" value="#{u.lastname}" required="true"
+				requiredMessage="Please enter lastname" />
+			<h:message for="lastname" style="color: red;" />
+			
+			
+			<h:outputLabel for="gender" value="Gender : " />
+			<h:inputText id="gender" class="fadeIn fifth" value="#{u.gender}" required="true"
+				requiredMessage="Please enter lastname" />
+			<h:message for="gender" style="color: red;" />
+			
+		
+			 <h:outputLabel class="fadeIn sixth" for="email" value="Email : " />
+			<h:inputText  id="email" value="#{u.email}" required="false"/>
+			<br/>
+			
+			
+			
+			<h:outputLabel for="mobile" class="fadeIn seventh" value="Phone number : " /> 
+			<h:inputText id="mobile" value="#{u.mobile}" required="false"/>
+			<br/>
+			
+			
+			 <h:outputLabel for="password" value="Password : " /> 
+			<h:inputSecret class="fadeIn eigth" id="password" name="password" value="#{u.password}" required="true"
+				requiredMessage="Please enter password">
+				<f:validator validatorId="passwordValidator" />
+				<!-- <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" /> -->
+				<f:attribute name="confirm" value="#{confirm}" />
+			</h:inputSecret>
+			<h:message for="password" style="color: red;" />
+			
+            
+			<h:outputLabel for="confirm" value="Confirm password : " /> 
+			<h:inputSecret class="fadeIn eigth" id="confirm" required="true"
+				binding="#{confirm}"
+				requiredMessage="Please enter confirm password" />
+			<h:message for="confirmPassword" style="color: red;" />
+			
+     		<p> <h:outputLabel value="#{u.response}" /></p>
+		</h:panelGrid>
+
+		<h:commandButton style="margin-right:16px" class="fadeIn ninth" action="login"  value="register" >
+		<f:actionListener binding="#{u.insert()}"/>
+		</h:commandButton>
+		
+		 <h:message class="btn" for="register" style="color: green;" />
+         <h:button value="Already,user?" outcome="index" />
+	</h:form>
+	</div>
+</div>
+
+</body>
+</html>

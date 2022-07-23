@@ -1,0 +1,31 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <link rel="stylesheet" href="login.css" type="text/css"/>
+<head>
+	<title>User Login</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+    <div id="formContent">
+    
+    <h2 class="active"> Sign In </h2>
+    <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+	 <div class="fadeIn first">
+      <img src="loginIcon.png" id="icon" alt="User Icon" />
+    </div>
+	<h:form>
+		
+		<h:inputText  id="login" class="fadeIn second" value="#{u.username}" placeholder="enter username" validatorMessage="Value is required"/>
+		
+		<h:inputSecret id="password" class="fadeIn third" value="#{u.password}" validatorMessage="Value is required"/>
+		<p> <h:outputLabel  value="#{u.response}" /></p>
+		
+	
+		<h:commandButton class="fadeIn fourth" action="#{vald.Validate(u.username,u.password)}" value="Login" >
+		<h:button value="Create an account?" outcome="register" />
+		</h:commandButton>
+	</h:form>
+	 </div>
+</div>
+</body>
+</html>
